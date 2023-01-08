@@ -1,0 +1,38 @@
+<main class="row">
+    <!-- ingresar lista de tareas -->
+    <section class="col-6 border border-secondary text-center ">
+      <article class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"></label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese nombre de la tarea"   name="tarea" [(ngModel)]="tarea">
+      </article>
+      <article class="mb-3">
+        <textarea placeholder="Ingrese descripción:" class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion" [(ngModel)]="descripcion"></textarea>
+        <button class="btn btn-primary" (click)="Agregar()">Agregar</button>
+        <p style="color: red;font-weight: bold">{{error}}</p>
+      </article>
+    </section>
+    <!-- listado de tareas -->
+    <article class="list-container col-6 border border-secondary text-center">
+      <p>Lista de tareas</p>
+      <table class="table">
+          <thead>
+            <tr class="bg-info">
+              <th>Tarea</th>
+              <th>Descripción</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let fila of lista; let i = index in lista"  [ngStyle]="{'background-color':i%2==0?'#ABEBC6':'#D6EAF8'}">
+              <td>{{fila.tarea}} </td>
+              <td>{{fila.descripcion}}</td>
+              <td>
+                <button class="btn btn-danger col" value={{i}} (click)="Eliminar(i)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </article>
+  </main>
+
+  
